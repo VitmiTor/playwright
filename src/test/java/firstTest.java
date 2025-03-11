@@ -3,8 +3,6 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
-import java.nio.file.Paths;
-
 
 public class firstTest {
     public static void main(String[] args) {
@@ -14,7 +12,7 @@ public class firstTest {
             page.navigate("https://www.saucedemo.com/v1/");
 
 
-            page.locator("id=user-name").isVisible();
+            page.locator("id=user-name").fill("standard_user");
 
             page.locator("id=password").fill("secret_sauce");
 
@@ -22,7 +20,6 @@ public class firstTest {
 
             page.locator("text=Products").isVisible();
 
-            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot.png")));
 
         }
     }
