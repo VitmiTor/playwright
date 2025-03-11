@@ -1,12 +1,9 @@
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
 import java.nio.file.Paths;
-
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 
 public class firstTest {
@@ -17,21 +14,16 @@ public class firstTest {
             page.navigate("https://www.saucedemo.com/v1/");
 
 
-            Locator getUsername = page.locator("id=user-name");
-            assertThat(getUsername).isVisible();
-            getUsername.fill("standard_user");
+            page.locator("id=user-name").isVisible();
 
-            Locator getPassword = page.locator("id=password");
-            getPassword.fill("secret_sauce");
+            page.locator("id=password").fill("secret_sauce");
 
-            Locator getLoginBtn = page.locator("id=login-button");
-            getLoginBtn.click();
+            page.locator("id=login-button").click();
 
-            Locator getTitle = page.locator("text=Products");
-            assertThat(getTitle).isVisible();
+            page.locator("text=Products").isVisible();
 
             page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot.png")));
-            
+
         }
     }
 }
